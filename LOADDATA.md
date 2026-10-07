@@ -64,3 +64,40 @@ SET
         NULLIF(TRIM(TRAILING '\r' FROM @Comentarios), ''),
         500
     );
+LOAD XML
+
+mysql> LOAD XML LOCAL INFILE "C:/Users/MSI/Desktop/DATOS/MegaDrive.xml"
+    -> INTO TABLE Juegos
+    -> ROWS IDENTIFIED BY '<game>'
+    -> (@imageNumber, @title, @romSize, @publisher)
+    -> SET
+    ->     JuegoID = @imageNumber + 9999,
+    ->     Titulo = @title,
+    ->     Tamanio = @romSize,
+    ->     Editor = @publisher,
+    ->     Consola = 'Mega Drive';
+
+
+mysql> LOAD XML LOCAL INFILE "C:/Users/MSI/Desktop/DATOS/Nintendo.xml"
+    -> INTO TABLE Juegos
+    -> ROWS IDENTIFIED BY '<game>'
+    -> (@imageNumber, @title, @romSize, @publisher)
+    -> SET
+    ->     JuegoID = @imageNumber + 11999,
+    ->     Titulo = @title,
+    ->     Tamanio = @romSize,
+    ->     Editor = @publisher,
+    ->     Consola = 'Nintendo';
+
+mysql> LOAD XML LOCAL INFILE "C:/Users/MSI/Desktop/DATOS/GameBoy.xml"
+    -> INTO TABLE Juegos
+    -> ROWS IDENTIFIED BY '<game>'
+    -> (@imageNumber, @title, @romSize, @publisher)
+    -> SET
+    ->     JuegoID = @imageNumber + 14999,
+    ->     Titulo = @title,
+    ->     Tamanio = @romSize,
+    ->     Editor = @publisher,
+    ->     Consola = 'Game Boy';
+
+
